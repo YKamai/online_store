@@ -1,21 +1,38 @@
 <header>
-  <ul>
-    <li><%= link_to 'Sign in', signup_path %></li>
-    <li><%= link_to 'Sign up', signup_path %></li>
-  </ul>
+  <div>
+    <% if logged_in? %>
+      <span>Welcome, </span>
+      <%= current_user.name %>
+      <span>|</span>
+      <%= link_to 'Sign out', logout_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', login_path %>
+      <span>|</span>
+      <%= link_to 'Sign up', signup_path %>
+      <p class='notice-success'>Please Sign In to manage your basket.</p>
+    <% end %>
+  </div>
 </header>
 
-<h1>Products</h1>
+<h2>Products</h2>
 
-
-
-<table>
-
+<table class='table'>
 <% @products.each do |product| %>
   <tr>
-    <td><h4><%= product.name %></h4></td>
-    <td>Price: <%= number_to_currency product.price %></td>
-    <td>Manufacturer: <%= product.manufacturer %></td>
+    <td>
+      <li>
+        <strong><%= product.name %></strong>
+      </li>
+      <p>
+      Price: <%= number_to_currency product.price %>
+      Manufacturer: <%= product.manufacturer %>
+      </p>
+    </td>
+    <td>
+    <% if logged_in? %>
+      <input type='button' value='Add to Basket'/>
+    <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

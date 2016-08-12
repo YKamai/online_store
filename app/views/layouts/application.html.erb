@@ -8,6 +8,11 @@
 <style type="text/css"></style>
 </head>
 <body>
+  <h1>
+  <%= link_to image_tag('rails.png'), root_url %>
+  ONLINE STORE
+  </h1>
+  <hr />
 
 <% flash.each do |message_type, message| %>
   <div class="notice-<%= message_type %>"><%= message %></div>

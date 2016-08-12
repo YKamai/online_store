@@ -1,9 +1,13 @@
 OnlineStore::Application.routes.draw do
 
-  get "/signup", to:'users#new'
   root to: 'products#index'
+  get '/signup', to:'users#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :products, only: [:index]
-  resources :users#, only: [:new]
+  resources :users
 
 
   # The priority is based upon order of creation:

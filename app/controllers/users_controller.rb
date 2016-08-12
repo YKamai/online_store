@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      flash[:success] = "User #{@user.name} was created successfully! Please Sign In to fill your basket."
-      redirect_to '/'
+      login(@user)
+      redirect_to root_url
     else
       render 'new'
     end

@@ -29,6 +29,9 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# To debug
+gem 'byebug'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

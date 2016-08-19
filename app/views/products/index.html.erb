@@ -5,6 +5,9 @@
       <%= current_user.name %>
       <span>|</span>
       <%= link_to 'Sign out', logout_path, method: :delete %>
+      <span>|</span>
+      <%= link_to 'Basket:', basket_path %>
+      <span id='basket_qty'><%= current_basket_qty %></span>
     <% else %>
       <%= link_to 'Sign in', login_path %>
       <span>|</span>
@@ -16,23 +19,4 @@
 
 <h2>Products</h2>
 
-<table class='table'>
-<% @products.each do |product| %>
-  <tr>
-    <td>
-      <li>
-        <strong><%= product.name %></strong>
-      </li>
-      <p>
-      Price: <%= number_to_currency product.price %>
-      Manufacturer: <%= product.manufacturer %>
-      </p>
-    </td>
-    <td>
-    <% if logged_in? %>
-      <input type='button' value='Add to Basket'/>
-    <% end %>
-    </td>
-  </tr>
-<% end %>
-</table>
+<%= render 'products_table', products: @products %>

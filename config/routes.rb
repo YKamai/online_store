@@ -5,9 +5,14 @@ OnlineStore::Application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  post '/basket', to: 'baskets#add'
+  get '/basket', to: 'baskets#show'
+
+  # post '/', to: 'baskets#add'
 
   resources :products, only: [:index]
   resources :users
+  resources :baskets, only: [:show, :add]
 
 
   # The priority is based upon order of creation:

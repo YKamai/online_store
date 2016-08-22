@@ -19,4 +19,17 @@
 
 <h2>Products</h2>
 
-<%= render 'products_table', products: @products %>
+<table class='table'>
+<% @products.each do |product| %>
+<tr>
+  <td>
+    <%= render 'products/product', product: product %>
+  </td>
+  <td>
+  <% if logged_in? %>
+    <%= button_to 'Add to Basket', {controller: 'baskets', action: 'add', product_id: product.product_id}, remote: true %>
+  <% end %>
+  </td>
+</tr>
+<% end %>
+</table>

@@ -1,0 +1,19 @@
+<h2>Basket</h2>
+
+<div id='basket'>
+  <% if basket_products.empty? %>
+    <%= render 'baskets/empty' %>
+  <% else %>
+    <table class='table'>
+    <% basket_products.each do |product| %>
+    <tr>
+      <td>
+        <%= render 'products/product', product: product %>
+      </td>
+    </tr>
+    <% end %>
+    </table>
+    <%= button_to 'Clear Basket', {controller: 'baskets', action: 'destroy'},
+    method: :delete, data: {confirm: 'Are you sure?'}, remote: true %>
+  <% end %>
+</div>
